@@ -1,10 +1,7 @@
 const nodemailer = require('nodemailer');
 
 async function sendEmail() {
-  // Получение значения email из поля ввода
   const email = document.getElementById('email').value;
-
-  // Проверка введенного email на валидность
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (email === '') {
     alert('Введите ваш email');
@@ -15,8 +12,6 @@ async function sendEmail() {
   } else {
     document.getElementById('email').classList.remove('invalid');
     document.getElementById('email').classList.add('valid');
-
-    // Создание транспортера
     const transporter = nodemailer.createTransport({
       host: 'smtp.rambler.ru',
       port: 465,
@@ -26,16 +21,12 @@ async function sendEmail() {
         pass: "Kawrkawr4754"
       }
     });
-
-    // Определение параметров для отправки email
     const mailOptions = {
       from: 'ВАШ_EMAIL',
       to: email,
       subject: 'Тестовое сообщение',
       text: 'Привет, это тестовое сообщение!'
     };
-
-    // Отправка email
     transporter.sendMail(mailOptions, function(error, info) {
       if (error) {
         console.error('Ошибка при отправке email:', error);
