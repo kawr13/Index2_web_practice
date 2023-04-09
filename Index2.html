@@ -2,12 +2,20 @@
 <html>
   <head>
     <title>Рецепт</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="scripts\scripts.js" defer></script>
     <link rel="stylesheet" href="styles\styles.css">
   </head>
   <body>
   <header>
   <p></p>
   <h1><br>ГОТОВЬТЕ В МЕСТЕ С НАМИ</h1>
+  <div id="container">
+    <input type="text" id="email" placeholder="Введите ваш email">
+    <button class="theme" onclick="sendEmail()">Отправить на EMAIL</button>
+  </div>
+  <p id="result"></p>
   </header>
   <header2></header>
   <header3></header>
