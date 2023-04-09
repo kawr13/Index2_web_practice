@@ -1,18 +1,23 @@
 async function sendEmail() {
-    const email = document.getElementById('email').value;
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (email === '') {
+    const emailInput = document.getElementById('email');
+    const email = emailInput.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email) {
+      emailInput.classList.add('invalid');
+      emailInput.classList.remove('valid');
       alert('Введите ваш email');
-    } else if (!regex.test(email)) {
-      document.getElementById('email').classList.add('invalid');
-      document.getElementById('email').classList.remove('valid');
+      return;
+    } 
+    if (!emailRegex.test(email)) {
+      emailInput.classList.add('invalid');
+      emailInput.classList.remove('valid');
       alert('Некорректный email-адрес');
-    } else {
-      document.getElementById('email').classList.remove('invalid');
-      document.getElementById('email').classList.add('valid');
-      const successMessage = `Email успешно отправлен на ${email}!`;
-      console.log(successMessage);
-      alert(successMessage);
-    }
+      return;
+    } 
+    emailInput.classList.remove('invalid');
+    emailInput.classList.add('valid');
+    const successMessage = `Email успешно отправлен на ${email}!`;
+    console.log(successMessage);
+    alert(successMessage);
   }
   
